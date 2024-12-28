@@ -1,6 +1,6 @@
-score = 0
-player_answers = []
-true_answers = ["4", "4", "2", "3", "2", "1", "3", "1", "3", "3", ]
+score = 0 # очки
+player_answers = [] # ответа игрока
+true_answers = ["4", "4", "2", "3", "2", "1", "3", "1", "3", "3", ] # правельные ответы
 questions = [
     '''Вот твой первый вопрос:
 Что народная мудрость советует отдать врагу?
@@ -86,7 +86,7 @@ questions = [
 3.шведский стол
 4.еда на вынос
     """,
-]
+] # вопросы
 name = input("Привет! Введи свое имя:")
 print(f"""{name}, мы начинаем игру!
     Тебе будут заданы 10 вопросов. Каждый вопрос имеет 4 варианта ответа, но только один правильный. Как только ты дашь неправильный ответ, игра закончится. Но есть и приятные бонусы - несгораемые суммы.
@@ -97,18 +97,16 @@ print(f"""{name}, мы начинаем игру!
 
 """)
 
-for question in questions:
-    print(question)
+for i in range(len(questions)): # перебераем все вапросы из списка questions
+    print(questions[i]) # выводим вопрос
     answer = input("твой ответ: ")
-    player_answers.append(answer)
+    player_answers.append(answer) # сохраняем ответы игрока
 
-for i in range(len(questions)):
-    if player_answers[i] == true_answers[i]:
-        score += 1
+    if player_answers[i] == true_answers[i]: #сравнивает ответы игрока с правельными
+        score += 1 # если ответа правельны то плюсь 1 очко
     else:
         print(f"К сожалению, вы допустили ошибку на вопросе {i + 1}.")
-        break
-
+        break # если не правельно то должен закочится (но не заканчивается)
 if score < 3:
     print("вы нечего не выйграли")
 elif 3 <= score < 7:
